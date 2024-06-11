@@ -1,0 +1,25 @@
+<template>
+<lightning-card title="Custom Event Olusturma">
+    <p>PARENT</p>
+ <br>   
+ <c-a18custom-child-bir onelma={handleElma} ></c-a18custom-child-bir>
+    <p>bu bilgi >> {yeniBilgi} </p>
+    </lightning-card>
+ <br><p>**********</p>
+<lightning-card title="Custom Event Primitive Data Gonder">
+     <p>PARENT</p>
+ <br> 
+        
+  <c-a18custom-child-iki onarmut={handleArmut} ></c-a18custom-child-iki>
+     <p>bu bilgi >> {yeniBilgiPrimitive} </p>
+         </lightning-card>   
+<br><p>**********</p>
+<lightning-card title="CHILLDEN  Object Getir">
+    <p>PARENT</p>
+<br> 
+       
+ <c-a18custom-uc onayva={handleAyva} ></c-a18custom-uc>
+    <p>Childden gelen CUSTOMER NAME >> {customer.name} </p>
+    <p>Childden gelen CUSTOMER AGE >> {customer.age} </p>
+        </lightning-card>   
+</template>

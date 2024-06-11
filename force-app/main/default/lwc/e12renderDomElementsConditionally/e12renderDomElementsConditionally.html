@@ -1,0 +1,31 @@
+<template>
+
+ <template if:true={display}>
+  <lightning-card title="Student İnformation">
+
+    <div>
+    <lightning-input label="First Name" value={firstName} onchange={handlerFirstName}></lightning-input>
+    <lightning-input label="Last Name" value={lastName} onchange={handlerLastName}></lightning-input>
+    <lightning-input label="Roll Number" value={rollNumber} onchange={handlerRollNumber}></lightning-input>
+    <lightning-input label="Grade" value={grade} onchange={handlerGrade}></lightning-input>
+    <img src="https://pbs.twimg.com/profile_images/378800000761977866/e28142621017ca0fe4f1bf6750297a17_400x400.jpeg">
+    <br>
+    <lightning-button label="Save" onclick={saveButtonHandler}></lightning-button>
+    </div>
+   </lightning-card>
+ </template>
+
+
+   <template if:false={display}>
+    <lightning-card title="Student İnformation">
+        <div>
+          <p style="font-weight:bold" > first  name : {firstName}</p>
+           <p style="font-weight:bold">last name : {lastName}</p>
+           <p style="font-weight:bold">roll number : {rollNumber}</p>
+           <p style="font-weight:bold">Grade : {grade}</p>
+           <img src="https://i.ytimg.com/vi/3B4VdlNJHh8/hqdefault.jpg">
+        </div>
+     </lightning-card>
+   </template>
+
+</template>

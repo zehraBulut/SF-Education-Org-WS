@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <choices>
+        <name>domates</name>
+        <choiceText>&lt;span style=&quot;font-size: 13px;&quot;&gt;domates&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>yumurta</name>
+        <choiceText>yumurta</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <environments>Default</environments>
+    <interviewLabel>Alisveris Screen Flowu {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Alisveris Screen Flowu</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Alisveris_Ekrani</name>
+        <label>Alisveris Ekrani</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <backButtonLabel>Önceki Sayfa</backButtonLabel>
+        <connector>
+            <targetReference>OdemeAdimi</targetReference>
+        </connector>
+        <fields>
+            <name>adSoyad</name>
+            <extensionName>flowruntime:name</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>adress</name>
+            <extensionName>flowruntime:address</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Alisveris_Listesi</name>
+            <choiceReferences>yumurta</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Alisveris Listesi</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Sepete Ekle</nextOrFinishButtonLabel>
+        <pausedText>&lt;p&gt;BU ALISVERIS DURUDURULMUTUR &lt;/p&gt;&lt;p&gt;Dewam etmek ıcın lutfen &lt;strong&gt;P&lt;/strong&gt;&lt;strong style=&quot;color: rgb(29, 228, 46);&quot;&gt;AUSE FLOW &lt;/strong&gt;&lt;strong style=&quot;color: rgb(28, 231, 35);&quot;&gt;İNTERVİEW&lt;/strong&gt; kısmına gıdınız &lt;/p&gt;</pausedText>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Alisveris_yapmak_ister_misiniz</name>
+        <label>Alisveris yapmak ister misiniz</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <backButtonLabel>HAYIR</backButtonLabel>
+        <connector>
+            <targetReference>Alisveris_Ekrani</targetReference>
+        </connector>
+        <fields>
+            <name>aiisverisSorusu</name>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 16px; color: rgb(228, 29, 29);&quot;&gt;Alısverıs yapmak ıster mısınız?&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>EVET</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Alisveris_yapmak_ister_misiniz</targetReference>
+        </connector>
+    </start>
+    <status>Draft</status>
+    <subflows>
+        <name>OdemeAdimi</name>
+        <label>OdemeAdimi</label>
+        <locationX>176</locationX>
+        <locationY>398</locationY>
+        <flowName>Kredi_karti_Odeme_Ekrani</flowName>
+    </subflows>
+</Flow>

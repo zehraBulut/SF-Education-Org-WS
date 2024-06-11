@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="event bubbling">
+
+<div class="outerDiv"
+ onclick={handleOuterDiv}>
+  <div class="middleDiv"
+  onclick={handleMiddleDiv}>
+    <div class="innerDiv"
+    onclick={handleInnerDiv}>  
+    </div>
+   </div>
+</div>
+
+<p> Inner tik tiklandi -> {innerDiv} </p>
+<p> Middle tik tiklandi -> {middleDiv} </p>
+<p> Outer tik tiklandi -> {outerDiv} </p>
+
+   </lightning-card>
+</template>

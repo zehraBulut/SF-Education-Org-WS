@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <description>Kredi kati odemesıne aıt bılgılerı almak ve taksıt mıktarı hesaplamak ıcın olusturulmustur</description>
+    <environments>Default</environments>
+    <formulas>
+        <description>Aylıktaksıt mıktarını hesaplamak ıcındr</description>
+        <name>taksitTutari</name>
+        <dataType>Currency</dataType>
+        <expression>{!Harcama_miktari}/{!Taksit_Sayisi}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Kredi karti Odeme Ekrani {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Kredi karti Odeme Ekrani</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>kredi_karti_odeme_bilgi_ekrani</name>
+        <label>kredi karti odeme bilgi ekrani</label>
+        <locationX>670</locationX>
+        <locationY>326</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <backButtonLabel>odeme ekranına gerı dön</backButtonLabel>
+        <fields>
+            <name>odemeBilgileri</name>
+            <fieldText>&lt;p&gt;Sevgili  ..{!kart_uzerinde_yazan_isim}......&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Odemenız basarı ıle tamamlanmıstır&lt;/p&gt;&lt;p&gt;Aylik taksıt tutarınız ..............{!taksitTutari}&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;&lt;p&gt;Iyı gunler dılerız&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Tamam</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <description>Bu sceen aracılıgı ıle Userdan kredı kartı odemesıne aıt bılgıler alınacaktır</description>
+        <name>Kredi_karti_odeme_ekrani</name>
+        <label>Kredi karti odeme ekrani</label>
+        <locationX>670</locationX>
+        <locationY>206</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>kredi_karti_odeme_bilgi_ekrani</targetReference>
+        </connector>
+        <fields>
+            <name>Kredi_karti_Numarasi</name>
+            <dataType>String</dataType>
+            <fieldText>Kredi karti Numarasi</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>kart_uzerinde_yazan_isim</name>
+            <dataType>String</dataType>
+            <fieldText>kart uzerinde yazan isim</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Son_kullanma_tarihi</name>
+            <dataType>Date</dataType>
+            <fieldText>Son kullanma tarihi</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Harcama_miktari</name>
+            <dataType>Currency</dataType>
+            <fieldText>Harcama miktari</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>2</scale>
+        </fields>
+        <fields>
+            <name>Taksit_Sayisi</name>
+            <dataType>Number</dataType>
+            <fieldText>Taksit Sayisi</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+            <validationRule>
+                <errorMessage>&lt;p&gt;taksıt sayısı 0dan buyuk olmalıdır&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!Taksit_Sayisi}&gt;=1</formulaExpression>
+            </validationRule>
+        </fields>
+        <helpText>&lt;p&gt;Lutfen ılgılı alanlara aıt bılgılerı dldurun&lt;/p&gt;</helpText>
+        <nextOrFinishButtonLabel>odeme yap</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>544</locationX>
+        <locationY>48</locationY>
+        <connector>
+            <targetReference>Kredi_karti_odeme_ekrani</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+</Flow>

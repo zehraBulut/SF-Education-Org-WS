@@ -1,0 +1,23 @@
+<template>
+  <lightning-card variant="base" title="Sibling Communication">
+    <p>Buyuk Abla</p>
+
+       <lightning-input 
+        type="text"
+        label="Isim giriniz"
+        onchange={handleIsim}></lightning-input>
+        
+        <lightning-input 
+        type="number"
+        label="Yas giriniz"
+        onchange={handleAge}></lightning-input>
+
+
+    <lightning-button 
+        variant="brand" 
+        label="Yayinla"
+         title="radyo yayini baslat"
+       onclick={handleClick} 
+       class="slds-m-left_x-small"></lightning-button>
+  </lightning-card>
+</template>
